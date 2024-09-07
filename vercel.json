@@ -2,23 +2,28 @@
   "version": 2,
   "builds": [
     {
-      "src": "training11/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      "src": "manage.py",
+      "use": "@vercel/python@3.12"  
     },
     {
-      "src": "build_files.sh",
+      "src": "staticfiles/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/staticfiles/(.*)",
+      "src": "/static/(.*)",
       "dest": "/staticfiles/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "training11/wsgi.py"
+      "dest": "manage.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SECRET_KEY": "@django-secret-key",
+    "DEBUG": "false",
+    "ALLOWED_HOSTS": "training11.vercel.app",
+    "DATABASE_URL": "@database-url" 
+  }
 }

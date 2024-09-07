@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "manage.py",
-      "use": "@vercel/python@3.12"  
-    },
-    {
-      "src": "staticfiles/**",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/static/(.*)",
@@ -23,7 +13,7 @@
   "env": {
     "DJANGO_SECRET_KEY": "@django-secret-key",
     "DEBUG": "false",
-    "ALLOWED_HOSTS": "training11.vercel.app",
-    "DATABASE_URL": "@database-url" 
+    "ALLOWED_HOSTS": "your-app-name.vercel.app",
+    "DATABASE_URL": "@database-url"
   }
 }
